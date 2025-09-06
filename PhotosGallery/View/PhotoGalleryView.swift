@@ -20,6 +20,8 @@ struct PhotoGalleryView: View {
         GridItem(.flexible(), spacing: 2)
     ]
     
+    @State private var hasLoadedInitialData = false
+    
     var body: some View {
         
         VStack{
@@ -65,7 +67,10 @@ struct PhotoGalleryView: View {
             Spacer()
         }
         .onAppear {
-            photoGalleryProvider.getPhotoGalleryData(page: 1, limit: 60)
+            if !hasLoadedInitialData {
+                photoGalleryProvider.getPhotoGalleryData(page: 1, limit: 60)
+                hasLoadedInitialData = true
+            }
         }
 
 
