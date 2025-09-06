@@ -34,8 +34,9 @@ struct ImageDetailView: View {
                     }
                     .placeholder {
                         ProgressView()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.white)
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(2.0)
+                            .frame(width: 80, height: 80)
                     }
                     .resizable()
                     .aspectRatio(contentMode: .fit)

@@ -50,13 +50,19 @@ struct PhotoGalleryView: View {
             switch photoGalleryProvider.photosResponse {
                 
             case .loading:
-                
-                Spacer()
-                    .frame(height: 100)
-      
-                
-                ProgressView("Loading photos...")
-                    .padding()
+
+                VStack {
+                    
+                    Spacer()
+                    
+                    ProgressView("Loading photos...")
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(2.0)
+
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) 
+
                 
             case .error(_):
                 
