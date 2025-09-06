@@ -13,6 +13,7 @@ final class PhotosGalleryUITestsLaunchTests: XCTestCase {
         true
     }
 
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
@@ -30,4 +31,5 @@ final class PhotosGalleryUITestsLaunchTests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
     }
+    
 }
