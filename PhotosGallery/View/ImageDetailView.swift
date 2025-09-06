@@ -101,7 +101,41 @@ struct ImageDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
-        
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                HStack {
+                    Button(action: {
+                        if currentImage != nil {
+                            showingShareSheet = true
+                        }
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.white)
+                    }
+                    .disabled(currentImage == nil)
+                    
+                    Button(action: {
+                        if let image = currentImage {
+                               saveImageToPhotos(image: image)
+                           }
+                    }) {
+                        Image(systemName: "square.and.arrow.down")
+                            .foregroundColor(.white)
+                    }
+                    .disabled(currentImage == nil)
+                }
+            }
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            if let image = currentImage {
+                ShareSheet(items: [image])
+            }
+        }
+        .alert("Save Photo", isPresented: $showingSaveAlert) {
+            Button("OK") { }
+        } message: {
+            Text(saveMessage)
+        }
   
     }
     
@@ -142,6 +176,18 @@ struct ImageDetailView: View {
         )
     }
     
+    private func saveImageToPhotos(image: UIImage) {
+        guard let jpegData = image.jpegData(compressionQuality: 1.0),
+              let jpegImage = UIImage(data: jpegData) else {
+            saveMessage = "Failed to convert image to JPEG."
+            showingSaveAlert = true
+            return
+        }
 
+        UIImageWriteToSavedPhotosAlbum(jpegImage, nil, nil, nil)
+        
+        saveMessage = "Image saved successfully to Photos."
+        showingSaveAlert = true
+    }
 }
 
