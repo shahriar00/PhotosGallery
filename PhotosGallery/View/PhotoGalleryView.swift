@@ -64,13 +64,13 @@ struct PhotoGalleryView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity) 
 
                 
-            case .error(_):
+            case .error(let errorMessage):
                 
-                EmptyView()
+                ErrorMessage()
                 
             case .success(let data):
                 if data.isEmpty {
-                   Text("Data Not Found at this moment")
+                    ErrorMessage()
                 } else {
                     
                     ScrollView {
