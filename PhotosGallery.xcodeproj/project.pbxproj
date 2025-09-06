@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DA45CF282E6BDB9F00873030 /* UIPilot in Frameworks */ = {isa = PBXBuildFile; productRef = DA45CF272E6BDB9F00873030 /* UIPilot */; };
+		DA45CF2B2E6BDBEF00873030 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DA45CF2A2E6BDBEF00873030 /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DA45CF0A2E6BDB4D00873030 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA45CF2B2E6BDBEF00873030 /* Kingfisher in Frameworks */,
+				DA45CF282E6BDB9F00873030 /* UIPilot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = PhotosGallery;
 			packageProductDependencies = (
+				DA45CF272E6BDB9F00873030 /* UIPilot */,
+				DA45CF2A2E6BDBEF00873030 /* Kingfisher */,
 			);
 			productName = PhotosGallery;
 			productReference = DA45CEFB2E6BDB4C00873030 /* PhotosGallery.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = DA45CEF22E6BDB4C00873030;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DA45CF262E6BDB9F00873030 /* XCRemoteSwiftPackageReference "UIPilot" */,
+				DA45CF292E6BDBEF00873030 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DA45CEFC2E6BDB4C00873030 /* Products */;
 			projectDirPath = "";
@@ -583,6 +596,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA45CF262E6BDB9F00873030 /* XCRemoteSwiftPackageReference "UIPilot" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/canopas/UIPilot";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+		DA45CF292E6BDBEF00873030 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA45CF272E6BDB9F00873030 /* UIPilot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA45CF262E6BDB9F00873030 /* XCRemoteSwiftPackageReference "UIPilot" */;
+			productName = UIPilot;
+		};
+		DA45CF2A2E6BDBEF00873030 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA45CF292E6BDBEF00873030 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA45CEF32E6BDB4C00873030 /* Project object */;
 }
