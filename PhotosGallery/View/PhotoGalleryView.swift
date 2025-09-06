@@ -26,6 +26,27 @@ struct PhotoGalleryView: View {
         
         VStack{
             
+             HStack {
+                 Text("Photos Gallery")
+                     .font(.title2)
+                     .fontWeight(.semibold)
+                     .foregroundColor(.primary)
+                 
+                 Spacer()
+                 
+                 Button(action: {
+                     photoGalleryProvider.getPhotoGalleryData(page: 1, limit: 60)
+                 }) {
+                     Image(systemName: "arrow.clockwise")
+                         .foregroundColor(.blue)
+                 }
+             }
+             .padding()
+             .background(Color(.systemGray6))
+             .shadow(color: .black.opacity(0.1), radius: 2, y: 1)
+             
+             Divider()
+            
             switch photoGalleryProvider.photosResponse {
                 
             case .loading:
