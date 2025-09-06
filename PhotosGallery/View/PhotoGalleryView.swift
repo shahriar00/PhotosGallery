@@ -6,11 +6,71 @@
 //
 
 import SwiftUI
+import UIPilot
 
 struct PhotoGalleryView: View {
+
+    @ObservedObject var photoGalleryProvider = PhotoGalleryProvider.shared
+    
+    @EnvironmentObject var pilot: UIPilot<AppRoute>
+    
+    private let columns = [
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack{
+            
+            switch photoGalleryProvider.photosResponse {
+                
+            case .loading:
+                
+                Spacer()
+                    .frame(height: 100)
+      
+                
+                ProgressView("Loading photos...")
+                    .padding()
+                
+            case .error(_):
+                
+                EmptyView()
+                
+            case .success(let data):
+                if data.isEmpty {
+                   Text("Data Not Found at this moment")
+                } else {
+                    
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 2) {
+                            ForEach(data) { photo in
+                                PhotoGridCells(photo: photo, viewModel: photoGalleryProvider)
+                                    .onTapGesture {
+                                       
+                                    }
+                                    
+                            }
+                        }
+                        .padding(.horizontal, 2)
+                        
+                        
+                    }
+                }
+                
+            }
+            
+            Spacer()
+        }
+        .onAppear {
+            photoGalleryProvider.getPhotoGalleryData(page: 1, limit: 60)
+        }
+
+
     }
+
 }
 
 #Preview {
