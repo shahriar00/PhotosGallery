@@ -6,17 +6,22 @@
 //
 
 import SwiftUI
-import Kingfisher
+import UIPilot
 
 struct ContentView: View {
+    
+    @StateObject var pilot = UIPilot(initial: AppRoute.PhotoGallery)
+    
     var body: some View {
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            
+            RouteView(pilot: pilot)
+                .navigationViewStyle(.stack)
+                .navigationBarBackButtonHidden()
+                .navigationBarHidden(true)
+                .ignoresSafeArea()
         }
-        .padding()
     }
 }
 

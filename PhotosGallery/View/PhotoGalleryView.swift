@@ -72,7 +72,7 @@ struct PhotoGalleryView: View {
                             ForEach(data) { photo in
                                 PhotoGridCells(photo: photo, viewModel: photoGalleryProvider)
                                     .onTapGesture {
-                                       
+                                        pilot.push(.ImageDetailView(imageURL:  photo.downloadUrl, photo: photo))
                                     }
                                     
                             }

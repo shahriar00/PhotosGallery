@@ -10,9 +10,8 @@ import SwiftUI
 import UIPilot
 
 enum AppRoute: Equatable {
-    
     case PhotoGallery
-    
+    case ImageDetailView(imageURL: String, photo: PhotosModel)
 }
 
 struct RouteView: View {
@@ -28,6 +27,8 @@ struct RouteView: View {
                     switch route {
                         
                     case .PhotoGallery: PhotoGalleryView()
+                        
+                    case .ImageDetailView(let imageURL,let photo): ImageDetailView(imageURL: imageURL, photo: photo)
                         
                     }
                 }
